@@ -14,6 +14,7 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 PASHKA = int(os.getenv("PASHKA"))
+ME = int(os.getenv("ME"))
 bot = Bot(token=TOKEN, parse_mode=ParseMode.HTML)
 dp = Dispatcher(bot)
 TOTAL = "0"
@@ -49,7 +50,7 @@ async def search_count():
     text = f"{date}\n{change_count}\n{rate}"
     if total_amount != TOTAL:
         await bot.send_message(chat_id=PASHKA, text=text)
-        await bot.send_message(chat_id=575834579, text=text)
+        await bot.send_message(chat_id=ME, text=text)
         TOTAL = total_amount
     return True
 
